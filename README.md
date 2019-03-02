@@ -1,0 +1,103 @@
+This Flutter plugin aims to achive [drop cap](https://en.wikipedia.org/wiki/Initial#Types_of_initial) in text capitalization.
+
+## Usage
+
+To use this plugin, add `drop_cap_text` as a dependency in your pubspec.yaml file.
+
+```
+DropCapText(
+    loremIpsumText,
+    style: TextStyle(fontStyle: FontStyle.italic),
+),
+```
+
+![ex1](https://i.ibb.co/wQMn1z3/ex1.png)
+
+### Properties
+
+| Name           | Type               | Default                 | Description |
+| -------------- | ------------------ | ----------------------- | ----------- |
+| data           | String             | null                    |             |
+| mode           | DropCapMode        | DropCapMode.inside      |             |
+| textAlign      | TextAlign          | null                    |             |
+| indentation    | Offset             | Offset.zero             |             |
+| dropCapChars   | int                | 1                       |             |
+| dropCapPadding | EdgeInsets         | EdgeInsets.zero         |             |
+| dropCap        | DropCap `[Widget]` | null                    |             |
+| style          | TextStyle          | null                    |             |
+| dropCapStyle   | TextStyle          | ( ... height: 0.8 ... ) |             |
+
+
+
+## Customization
+
+##### Custom DropCap Widget: Image
+
+![ex3](https://i.ibb.co/D43w1H8/ex3.png)
+
+```
+DropCapText(
+    loremIpsumText,
+    dropCap: DropCap(
+    width: 100,
+    height: 100,
+    child: Image.network(
+    	'https://www.codemate.com/wp-content/uploads/2017/09/flutter-logo.png')
+    ),
+),
+```
+
+------
+
+##### 2 characters + indentation 
+
+![ex2](https://i.ibb.co/yq1Vj7q/ex2.png)
+
+```
+DropCapText(
+    loremIpsumText,
+    style: TextStyle(
+        height: 1.3,
+        fontFamily: 'times',
+    ),
+    dropCapChars: 2,
+    indentation: Offset(25, 10),
+),
+```
+
+------
+
+##### Upward drop cap 
+
+![ex5](https://i.ibb.co/b3M6KD8/ex5.png)
+
+```
+DropCapText(
+    loremIpsumText,
+    mode: DropCapMode.upwards,
+    dropCapStyle: TextStyle(
+        color: Colors.red,
+        fontWeight: FontWeight.bold,
+        fontSize: 120,
+        fontFamily: 'times',
+    ),
+),
+```
+
+------
+
+##### Left drop cap
+
+![ex6](https://i.ibb.co/bFmrM6G/ex6.png)
+
+```
+DropCapText(
+    loremIpsumText,
+    style: TextStyle(
+        fontWeight: FontWeight.bold,
+        height: 1.2,
+    ),
+    mode: DropCapMode.left,
+),
+```
+
