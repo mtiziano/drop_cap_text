@@ -1,3 +1,8 @@
+
+[![pub package](https://img.shields.io/pub/v/drop_cap_text.svg)](https://pub.dartlang.org/packages/drop_cap_text)
+[![Awesome](https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square)](https://stackoverflow.com/questions/tagged/flutter?sort=votes)
+
+
 This Flutter plugin aims to achive [drop cap](https://en.wikipedia.org/wiki/Initial#Types_of_initial) in text capitalization.
 
 ## Usage
