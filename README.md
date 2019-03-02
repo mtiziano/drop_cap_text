@@ -8,8 +8,16 @@ This Flutter plugin aims to achive [drop cap](https://en.wikipedia.org/wiki/Init
 ## Usage
 
 To use this plugin, add `drop_cap_text` as a dependency in your pubspec.yaml file.
-
+```yaml
+dependencies:
+  drop_cap_text: ^1.0.1
 ```
+
+```dart
+import 'package:drop_cap_text/drop_cap_text.dart';
+```
+
+```dart
 DropCapText(
     loremIpsumText,
     style: TextStyle(fontStyle: FontStyle.italic),
@@ -40,7 +48,7 @@ DropCapText(
 
 ![ex3](https://i.ibb.co/D43w1H8/ex3.png)
 
-```
+```dart
 DropCapText(
     loremIpsumText,
     dropCap: DropCap(
@@ -58,7 +66,7 @@ DropCapText(
 
 ![ex2](https://i.ibb.co/yq1Vj7q/ex2.png)
 
-```
+```dart
 DropCapText(
     loremIpsumText,
     style: TextStyle(
@@ -76,7 +84,7 @@ DropCapText(
 
 ![ex5](https://i.ibb.co/b3M6KD8/ex5.png)
 
-```
+```dart
 DropCapText(
     loremIpsumText,
     mode: DropCapMode.upwards,
@@ -95,7 +103,7 @@ DropCapText(
 
 ![ex6](https://i.ibb.co/bFmrM6G/ex6.png)
 
-```
+```dart
 DropCapText(
     loremIpsumText,
     style: TextStyle(
