@@ -97,6 +97,9 @@ class DropCapText extends StatelessWidget {
     capHeight += dropCapPadding.top + dropCapPadding.bottom;
 
     int rows = ((capHeight - indentation.dy) / lineHeight).ceil();
+    if (rows != 0) {
+      rows--;
+    }
 
     // DROP CAP MODE - UPWARDS
     if (mode == DropCapMode.upwards) {
