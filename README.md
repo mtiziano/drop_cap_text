@@ -10,7 +10,7 @@ This Flutter plugin aims to achive [drop cap](https://en.wikipedia.org/wiki/Init
 To use this plugin, add `drop_cap_text` as a dependency in your pubspec.yaml file.
 ```yaml
 dependencies:
-  drop_cap_text: ^1.0.1
+  drop_cap_text: ^1.0.2
 ```
 
 ```dart
