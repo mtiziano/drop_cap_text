@@ -99,7 +99,7 @@ DropCapText(
 
 ------
 
-##### Left drop cap
+##### Aside drop cap
 
 ![ex6](https://i.ibb.co/bFmrM6G/ex6.png)
 
@@ -110,7 +110,7 @@ DropCapText(
         fontWeight: FontWeight.bold,
         height: 1.2,
     ),
-    mode: DropCapMode.left,
+    mode: DropCapMode.aside,
 ),
 ```
 
