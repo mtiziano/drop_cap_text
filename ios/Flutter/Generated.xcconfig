@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=C:\flutter
-FLUTTER_APPLICATION_PATH=C:\Users\Tiziano\Documents\_dev_repos\uildm\lib\drop_cap_text
+FLUTTER_APPLICATION_PATH=C:\Users\Tiziano\lib\drop_cap_text
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build\ios
