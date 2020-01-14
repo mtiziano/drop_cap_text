@@ -28,17 +28,20 @@ DropCapText(
 
 ### Properties
 
-| Name           | Type               | Default                 | Description |
-| -------------- | ------------------ | ----------------------- | ----------- |
-| data           | String             | null                    |             |
-| mode           | DropCapMode        | DropCapMode.inside      |             |
-| textAlign      | TextAlign          | null                    |             |
-| indentation    | Offset             | Offset.zero             |             |
-| dropCapChars   | int                | 1                       |             |
-| dropCapPadding | EdgeInsets         | EdgeInsets.zero         |             |
-| dropCap        | DropCap `[Widget]` | null                    |             |
-| style          | TextStyle          | null                    |             |
-| dropCapStyle   | TextStyle          | ( ... height: 0.8 ... ) |             |
+| Name            | Type               | Default                 | Description        |
+| --------------- | ------------------ | ----------------------- | ------------------ |
+| data            | String             | null                    |                    |
+| mode            | DropCapMode        | DropCapMode.inside      | aside, upwards, .. |
+| textAlign       | TextAlign          | null                    |                    |
+| indentation     | Offset             | Offset.zero             |                    |
+| dropCapChars    | int                | 1                       |                    |
+| dropCapPadding  | EdgeInsets         | EdgeInsets.zero         |                    |
+| dropCap         | DropCap `[Widget]` | null                    |                    |
+| style           | TextStyle          | null                    |                    |
+| dropCapStyle    | TextStyle          |                         |                    |
+| forceNoDescent  | bool               | false                   |                    |
+| dropCapPosition | DropCapPosition    | DropCapPosition.start   |                    |
+| textDirection   | TextDirection      | TextDirection.ltr       |                    |
 
 
 
@@ -51,6 +54,25 @@ DropCapText(
 ```dart
 DropCapText(
     loremIpsumText,
+    dropCap: DropCap(
+    width: 100,
+    height: 100,
+    child: Image.network(
+    	'https://www.codemate.com/wp-content/uploads/2017/09/flutter-logo.png')
+    ),
+),
+```
+
+
+##### Custom DropCap Widget: Image right + justification
+
+![ex7](https://i.ibb.co/WVPT3HH/img-end.jpg)
+
+```dart
+DropCapText(
+    loremIpsumText,
+    dropCapPosition: DropCapPosition.end,
+    textAlign: TextAlign.justify,
     dropCap: DropCap(
     width: 100,
     height: 100,
