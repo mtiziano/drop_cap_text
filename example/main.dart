@@ -9,8 +9,6 @@ void main() {
 }
 
 class ExampleApp extends StatelessWidget {
-  static const String APP_TITLE = 'UILDM';
-
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
