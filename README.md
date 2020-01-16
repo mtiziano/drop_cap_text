@@ -28,20 +28,21 @@ DropCapText(
 
 ### Properties
 
-| Name            | Type               | Default                 | Description        |
-| --------------- | ------------------ | ----------------------- | ------------------ |
-| data            | String             | null                    |                    |
-| mode            | DropCapMode        | DropCapMode.inside      | aside, upwards, .. |
-| textAlign       | TextAlign          | null                    |                    |
-| indentation     | Offset             | Offset.zero             |                    |
-| dropCapChars    | int                | 1                       |                    |
-| dropCapPadding  | EdgeInsets         | EdgeInsets.zero         |                    |
-| dropCap         | DropCap `[Widget]` | null                    |                    |
-| style           | TextStyle          | null                    |                    |
-| dropCapStyle    | TextStyle          |                         |                    |
-| forceNoDescent  | bool               | false                   |                    |
-| dropCapPosition | DropCapPosition    | DropCapPosition.start   |                    |
-| textDirection   | TextDirection      | TextDirection.ltr       |                    |
+| Name                | Type               | Default                 | Description        |
+| ------------------- | ------------------ | ----------------------- | ------------------ |
+| data                | String             | null                    |                    |
+| mode                | DropCapMode        | DropCapMode.inside      | aside, upwards, .. |
+| textAlign           | TextAlign          | null                    |                    |
+| indentation         | Offset             | Offset.zero             |                    |
+| dropCapChars        | int                | 1                       |                    |
+| dropCapPadding      | EdgeInsets         | EdgeInsets.zero         |                    |
+| dropCap             | DropCap `[Widget]` | null                    |                    |
+| style               | TextStyle          | null                    |                    |
+| dropCapStyle        | TextStyle          |                         |                    |
+| forceNoDescent      | bool               | false                   |                    |
+| parseInlineMarkdown | bool               | false                   | bold|italic|underl |
+| dropCapPosition     | DropCapPosition    | DropCapPosition.start   |                    |
+| textDirection       | TextDirection      | TextDirection.ltr       |                    |
 
 
 
