@@ -1,4 +1,3 @@
-### [0.0.1] TODO
+### [1.0.3] TODO
 
-* fix text junction with textStyle: justify 
-
+* support advanced markdown 
