@@ -10,7 +10,7 @@ This Flutter plugin aims to achive [drop cap](https://en.wikipedia.org/wiki/Init
 To use this plugin, add `drop_cap_text` as a dependency in your pubspec.yaml file.
 ```yaml
 dependencies:
-  drop_cap_text: ^1.0.2
+  drop_cap_text: ^1.0.3
 ```
 
 ```dart
@@ -65,6 +65,24 @@ DropCapText(
 ```
 
 
+------
+##### Custom DropCap Widget: Parse Inline Markdown
+only supports _italic_ **bold** underline
+
+![ex8](https://imgbbb.com/images/2020/01/16/lorem_md.png)
+
+```dart
+DropCapText(
+  'Lorem ipsum **dolor sit amet, consectetur adipiscing elit, ++sed do eiusmod++ tempor incididunt** ut labore et _dolore magna aliqua_.',
+  parseInlineMarkdown: true,
+  dropCapStyle: TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.green),
+  dropCapPadding: EdgeInsets.only(right: 19.0),
+  style: TextStyle(fontSize: 18.0, height: 1.5),
+),
+```
+
+
+------
 ##### Custom DropCap Widget: Image right + justification
 
 ![ex7](https://i.ibb.co/WVPT3HH/img-end.jpg)
