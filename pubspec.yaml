@@ -1,8 +1,7 @@
 name: drop_cap_text
 description: This Flutter plugin aims to achive drop cap in text capitalization.
-version: 1.0.2
-author: Tiziano Munegato <tiziano.munegato@gmail.com>
-homepage: https://github.com/numez/drop_cap_text
+version: 1.0.3
+homepage: https://github.com/mtiziano/drop_cap_text
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
