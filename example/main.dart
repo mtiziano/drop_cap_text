@@ -32,6 +32,14 @@ class ExampleApp extends StatelessWidget {
                 ),
                 SizedBox(height: 30),
                 DropCapText(
+                  'Lorem ipsum **dolor sit amet, consectetur adipiscing elit, ++sed do eiusmod++ tempor incididunt** ut labore et _dolore magna aliqua_.',
+                  parseInlineMarkdown: true,
+                  dropCapStyle: TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.green),
+                  dropCapPadding: EdgeInsets.only(right: 19.0),
+                  style: TextStyle(fontSize: 18.0, height: 1.5),
+                ),
+                SizedBox(height: 30),
+                DropCapText(
                   loremIpsumText,
                   dropCapPosition: DropCapPosition.end,
                   textAlign: TextAlign.justify,
