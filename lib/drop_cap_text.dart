@@ -53,6 +53,8 @@ class DropCapText extends StatelessWidget {
   final TextDirection textDirection;
   final DropCapPosition dropCapPosition;
   final int dropCapChars;
+  final int maxLines;
+  final TextOverflow overflow;
 
   DropCapText(this.data,
       {Key key,
@@ -67,6 +69,8 @@ class DropCapText extends StatelessWidget {
       this.forceNoDescent = false,
       this.parseInlineMarkdown = false,
       this.textDirection = TextDirection.ltr,
+      this.overflow = TextOverflow.clip,
+      this.maxLines,
       this.dropCapPosition})
       : assert(data != null),
         super(key: key);
@@ -195,8 +199,12 @@ class DropCapText extends StatelessWidget {
               Flexible(
                 child: Container(
                   padding: EdgeInsets.only(top: indentation.dy),
-                  height: (lineHeight * rows) + indentation.dy,
+                  height: (lineHeight * min(maxLines ?? rows, rows)) + indentation.dy,
                   child: RichText(
+                    overflow: (maxLines == null || (maxLines > rows && overflow == TextOverflow.fade))
+                        ? TextOverflow.clip
+                        : overflow,
+                    maxLines: maxLines,
                     textDirection: textDirection,
                     textAlign: textAlign,
                     text: textSpan,
@@ -205,18 +213,21 @@ class DropCapText extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: EdgeInsets.only(left: indentation.dx),
-            child: RichText(
-              textAlign: textAlign,
-              textDirection: textDirection,
-              text: TextSpan(
-                text: parseInlineMarkdown ? null : restData.substring(charIndexEnd),
-                children: parseInlineMarkdown ? mdRest.subchars(charIndexEnd).toTextSpanList() : null,
-                style: textStyle.apply(fontSizeFactor: MediaQuery.of(context).textScaleFactor),
+          if (maxLines == null || maxLines > rows)
+            Padding(
+              padding: EdgeInsets.only(left: indentation.dx),
+              child: RichText(
+                overflow: overflow,
+                maxLines: maxLines != null && maxLines > rows ? maxLines - rows : null,
+                textAlign: textAlign,
+                textDirection: textDirection,
+                text: TextSpan(
+                  text: parseInlineMarkdown ? null : restData.substring(charIndexEnd),
+                  children: parseInlineMarkdown ? mdRest.subchars(charIndexEnd).toTextSpanList() : null,
+                  style: textStyle.apply(fontSizeFactor: MediaQuery.of(context).textScaleFactor),
+                ),
               ),
             ),
-          ),
         ],
       );
     });

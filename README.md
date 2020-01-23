@@ -7,12 +7,6 @@ This Flutter plugin aims to achive [drop cap](https://en.wikipedia.org/wiki/Init
 
 ## Usage
 
-To use this plugin, add `drop_cap_text` as a dependency in your pubspec.yaml file.
-```yaml
-dependencies:
-  drop_cap_text: ^1.0.3
-```
-
 ```dart
 import 'package:drop_cap_text/drop_cap_text.dart';
 ```
@@ -43,6 +37,8 @@ DropCapText(
 | parseInlineMarkdown | bool               | false                   | bold|italic|underl |
 | dropCapPosition     | DropCapPosition    | DropCapPosition.start   |                    |
 | textDirection       | TextDirection      | TextDirection.ltr       |                    |
+| maxLines            | int                |                         |                    |
+| overflow            | TextOverflow       | TextOverflow.clip       |                    |
 
 
 
