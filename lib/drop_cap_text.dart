@@ -155,7 +155,7 @@ class DropCapText extends StatelessWidget {
 
       int charIndexEnd = data.length;
 
-      int startMillis = new DateTime.now().millisecondsSinceEpoch;
+      //int startMillis = new DateTime.now().millisecondsSinceEpoch;
       if (rows > 0) {
         textPainter.layout(maxWidth: boundsWidth);
         double yPos = rows * lineHeight;
