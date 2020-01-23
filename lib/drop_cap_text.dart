@@ -166,7 +166,7 @@ class DropCapText extends StatelessWidget {
       } else {
         charIndexEnd = dropCapChars;
       }
-      int totMillis = new DateTime.now().millisecondsSinceEpoch - startMillis;
+      //int totMillis = new DateTime.now().millisecondsSinceEpoch - startMillis;
 
       // DROP CAP MODE - LEFT
       if (mode == DropCapMode.aside) charIndexEnd = data.length;
