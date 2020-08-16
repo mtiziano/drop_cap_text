@@ -201,6 +201,7 @@ class DropCapText extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.only(top: indentation.dy),
                   height: (lineHeight * min(maxLines ?? rows, rows)) + indentation.dy,
+                  width: boundsWidth,
                   child: RichText(
                     overflow: (maxLines == null || (maxLines > rows && overflow == TextOverflow.fade))
                         ? TextOverflow.clip
