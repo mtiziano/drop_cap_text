@@ -1,8 +1,7 @@
-library drop_cap_text;
-
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -27,10 +26,10 @@ class DropCap extends StatelessWidget {
   final double width, height;
 
   DropCap({
-    Key key,
-    this.child,
-    @required this.width,
-    @required this.height,
+    Key? key,
+    required this.child,
+    required this.width,
+    required this.height,
   })  : assert(width != null),
         assert(height != null),
         super(key: key);
@@ -44,20 +43,20 @@ class DropCap extends StatelessWidget {
 class DropCapText extends StatelessWidget {
   final String data;
   final DropCapMode mode;
-  final TextStyle style, dropCapStyle;
+  final TextStyle? style, dropCapStyle;
   final TextAlign textAlign;
-  final DropCap dropCap;
+  final DropCap? dropCap;
   final EdgeInsets dropCapPadding;
   final Offset indentation;
   final bool forceNoDescent, parseInlineMarkdown;
   final TextDirection textDirection;
-  final DropCapPosition dropCapPosition;
+  final DropCapPosition? dropCapPosition;
   final int dropCapChars;
-  final int maxLines;
+  final int? maxLines;
   final TextOverflow overflow;
 
   DropCapText(this.data,
-      {Key key,
+      {Key? key,
       this.mode = DropCapMode.inside,
       this.style,
       this.dropCapStyle,
@@ -78,7 +77,7 @@ class DropCapText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = TextStyle(
-      color: Colors.black,
+      color: Theme.of(context).textTheme.bodyText1?.color ?? Colors.black,
       fontSize: 14,
       height: 1,
       fontFamily: Theme.of(context)?.textTheme?.body1?.fontFamily,
@@ -88,7 +87,7 @@ class DropCapText extends StatelessWidget {
 
     TextStyle capStyle = TextStyle(
       color: textStyle.color,
-      fontSize: textStyle.fontSize * 5.5,
+      fontSize: textStyle.fontSize! * 5.5,
       fontFamily: textStyle.fontFamily,
       fontWeight: textStyle.fontWeight,
       fontStyle: textStyle.fontStyle,
@@ -98,15 +97,15 @@ class DropCapText extends StatelessWidget {
     double capWidth, capHeight;
     int dropCapChars = dropCap != null ? 0 : this.dropCapChars;
     CrossAxisAlignment sideCrossAxisAlignment = CrossAxisAlignment.start;
-    MarkdownParser mdData = parseInlineMarkdown ? MarkdownParser(data) : null;
+    MarkdownParser? mdData = parseInlineMarkdown ? MarkdownParser(data) : null;
     final String dropCapStr = (mdData?.plainText ?? data).substring(0, dropCapChars);
 
     if (mode == DropCapMode.baseline && dropCap == null) return _buildBaseline(context, textStyle, capStyle);
 
     // custom DropCap
     if (dropCap != null) {
-      capWidth = dropCap.width;
-      capHeight = dropCap.height;
+      capWidth = dropCap!.width;
+      capHeight = dropCap!.height;
     } else {
       TextPainter capPainter = TextPainter(
         text: TextSpan(
@@ -128,12 +127,12 @@ class DropCapText extends StatelessWidget {
     capWidth += dropCapPadding.left + dropCapPadding.right;
     capHeight += dropCapPadding.top + dropCapPadding.bottom;
 
-    MarkdownParser mdRest = parseInlineMarkdown ? mdData.subchars(dropCapChars) : null;
+    MarkdownParser? mdRest = parseInlineMarkdown ? mdData!.subchars(dropCapChars) : null;
     String restData = data.substring(dropCapChars);
 
     TextSpan textSpan = TextSpan(
       text: parseInlineMarkdown ? null : restData,
-      children: parseInlineMarkdown ? mdRest.toTextSpanList() : null,
+      children: parseInlineMarkdown ? mdRest!.toTextSpanList() : null,
       style: textStyle.apply(fontSizeFactor: MediaQuery.of(context).textScaleFactor),
     );
 
@@ -198,10 +197,12 @@ class DropCapText extends StatelessWidget {
                     ),
               Flexible(
                 child: Container(
+                  color: Colors.orange,
                   padding: EdgeInsets.only(top: indentation.dy),
-                  height: (lineHeight * min(maxLines ?? rows, rows)) + indentation.dy,
+                  height:
+                      mode != DropCapMode.aside ? (lineHeight * min(maxLines ?? rows, rows)) + indentation.dy : null,
                   child: RichText(
-                    overflow: (maxLines == null || (maxLines > rows && overflow == TextOverflow.fade))
+                    overflow: (maxLines == null || (maxLines! > rows && overflow == TextOverflow.fade))
                         ? TextOverflow.clip
                         : overflow,
                     maxLines: maxLines,
@@ -213,17 +214,17 @@ class DropCapText extends StatelessWidget {
               ),
             ],
           ),
-          if (maxLines == null || maxLines > rows)
+          if (maxLines == null || maxLines! > rows)
             Padding(
               padding: EdgeInsets.only(left: indentation.dx),
               child: RichText(
                 overflow: overflow,
-                maxLines: maxLines != null && maxLines > rows ? maxLines - rows : null,
+                maxLines: maxLines != null && maxLines! > rows ? maxLines! - rows : null,
                 textAlign: textAlign,
                 textDirection: textDirection,
                 text: TextSpan(
-                  text: parseInlineMarkdown ? null : restData.substring(charIndexEnd),
-                  children: parseInlineMarkdown ? mdRest.subchars(charIndexEnd).toTextSpanList() : null,
+                  text: parseInlineMarkdown ? null : restData.substring(min(charIndexEnd, restData.length)),
+                  children: parseInlineMarkdown ? mdRest!.subchars(charIndexEnd).toTextSpanList() : null,
                   style: textStyle.apply(fontSizeFactor: MediaQuery.of(context).textScaleFactor),
                 ),
               ),
@@ -257,14 +258,14 @@ class DropCapText extends StatelessWidget {
 
 class MarkdownParser {
   final String data;
-  List<MarkdownSpan> spans;
-  String plainText;
+  late List<MarkdownSpan> spans;
+  String plainText = '';
 
   List<TextSpan> toTextSpanList() {
     return spans.map((s) => s.toTextSpan()).toList();
   }
 
-  MarkdownParser subchars(int startIndex, [int endIndex]) {
+  MarkdownParser subchars(int startIndex, [int? endIndex]) {
     final List<MarkdownSpan> subspans = [];
     int skip = startIndex;
     for (int s = 0; s < spans.length; s++) {
@@ -365,9 +366,9 @@ class MarkdownSpan {
   TextSpan toTextSpan() => TextSpan(text: text, style: style);
 
   MarkdownSpan({
-    @required this.text,
-    @required this.style,
-    @required this.markups,
+    required this.text,
+    required this.style,
+    required this.markups,
   });
 }
 
