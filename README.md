@@ -65,7 +65,7 @@ DropCapText(
 ##### Custom DropCap Widget: Parse Inline Markdown
 only supports _italic_ **bold** underline
 
-![ex8](https://imgbbb.com/images/2020/01/16/lorem_md.png)
+![ex8](https://i.ibb.co/tJsvbFt/dropcap-md2.jpg)
 
 ```dart
 DropCapText(
