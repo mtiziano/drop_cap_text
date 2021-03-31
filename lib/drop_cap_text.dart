@@ -197,7 +197,6 @@ class DropCapText extends StatelessWidget {
                     ),
               Flexible(
                 child: Container(
-                  color: Colors.orange,
                   padding: EdgeInsets.only(top: indentation.dy),
                   height:
                       mode != DropCapMode.aside ? (lineHeight * min(maxLines ?? rows, rows)) + indentation.dy : null,
